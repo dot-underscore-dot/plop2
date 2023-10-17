@@ -1,5 +1,6 @@
 {
     "debug":false,
     "gpu":true,
-    "memory":98304000
+    "memory":98304000,
+    "stackSize":65536
 }

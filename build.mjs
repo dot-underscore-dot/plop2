@@ -112,6 +112,7 @@ console.log('--setting config macros--');
 writeFileSync('./src/c/config.h',
 `#define DEBUG ${config.debug ? 1 : 0}
 #define USE_GPU ${config.gpu ? 1 : 0}
+#define STACK_SIZE ${config.stackSize}
 
 `, { encoding: 'utf-8' });
 
@@ -132,7 +133,7 @@ const clangStart = process.hrtime();
         ${config.debug ? '' : '-Wl,--lto-O3 '}-Wl,--thinlto-cache-dir=cache -Wl,--error-limit=0 \
         -Wl,--no-entry -Wl,--export-dynamic \
         -Wl,--import-memory -Wl,--shared-memory -Wl,--initial-memory=${config.memory} -Wl,--max-memory=${config.memory} \
-        -Wl,-z,stack-size=65536 \
+        -Wl,-z,stack-size=${config.stackSize} \
         -o build/game.wasm \
         ${files.join(' ')}`, { stdio: "inherit" });
 }

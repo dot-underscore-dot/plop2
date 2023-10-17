@@ -1,7 +1,7 @@
 #ifndef THREADS_H
 #define THREADS_H
 
-#define STACK_SIZE 65536
+#include "../config.h"
 
 i32 atomic_rmw_add_i32(void *addr, i32 value);
 i32 atomic_load_i32(void *addr);
