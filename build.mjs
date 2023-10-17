@@ -102,7 +102,8 @@ console.log('--generating elements.glsl--');
     const shader = readFileSync('./src/static/shaders/elements.glsl');
     const out = `#version 300 es
 #define ATLAS_HEIGHT (${2 ** Math.ceil(Math.log2(elementTypes.length * 8))}.0)
-${elementTypes.map((name, type) => `#define ${name.toUpperCase()} (${type}u)`).join('\n')}
+#define EMPTY (0u)
+${elementTypes.map((name, type) => `#define ${name.toUpperCase()} (${type+1}u)`).join('\n')}
 ${shader}`;
     writeFileSync('./build/shaders/elements.glsl', out, { encoding: 'utf-8' });
 }
