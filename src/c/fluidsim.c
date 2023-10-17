@@ -3,17 +3,17 @@
 #include "elements/elements.h"
 #include "walloc.h"
 
-inline f32 unsafeX(f32 *a, u8 x, u8 y) {
+INLINE f32 unsafeX(f32 *a, u8 x, u8 y) {
     if(x < 0 || x >= N) return 0.0f;
     return a[y * N + x];
 }
 
-inline f32 unsafeY(f32 *a, u8 x, u8 y) {
+INLINE f32 unsafeY(f32 *a, u8 x, u8 y) {
     if(y < 0 || y >= N) return 0.0f;
     return a[y * N + x];
 }
 
-inline f32 unsafeXY(f32 *a, u8 x, u8 y) {
+INLINE f32 unsafeXY(f32 *a, u8 x, u8 y) {
     if(x < 0 || x >= N || y < 0 || y >= N) return 0.0f;
     return a[y * N + x];
 }

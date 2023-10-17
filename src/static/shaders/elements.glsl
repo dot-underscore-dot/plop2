@@ -17,7 +17,7 @@ vec4 getTexture(uint type, uvec2 location) {
 
     return texture(
         u_textureAtlas, 
-        vec2(location % uvec2(8u) + textureOffset) / vec2(8.0, 64.0)
+        vec2(location % uvec2(8u) + textureOffset) / vec2(8.0, ATLAS_HEIGHT)
     );
 }
 

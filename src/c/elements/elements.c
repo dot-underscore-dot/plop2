@@ -6,7 +6,7 @@
 
 export ElementInfo elementLookup[type_length];
 
-inline u8 clamp_0_CHUNKSIZE(i16 n) {
+INLINE u8 clamp_0_CHUNKSIZE(i16 n) {
 	n &= -(n >= 0);
 	return n < (CHUNKSIZE) ? n : CHUNKSIZE - 1;
 }

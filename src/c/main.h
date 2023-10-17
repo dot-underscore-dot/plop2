@@ -1,8 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define DEBUG 1
-
+#include "config.h"
 #include <stdint.h>
 typedef uint8_t     u8;
 typedef int8_t      i8;
@@ -40,21 +39,17 @@ import(js, notify_main_thread, void notify_main_thread(void));
 
 #if DEBUG
 #define ASSERT(expr, message) do{ if(!(expr)) panicf(message); } while(0)
+#define INLINE
 #else
 #define ASSERT(expr, message)
+#define INLINE inline
 #endif
 #define STATIC_ASSERT(expr, message) _Static_assert(expr, message)
 
-#define USE_GPU 0
 
 #ifndef NULL
 #define NULL ((void*)0)
 #endif
-
-inline f32 fabs32(f32 f) {
-    u32 i = ((*(u32*)&f) & 0x7fffffff);
-    return (*(f32*)&i);
-}
 
 struct GlueInformation {
     u32 gpuRenderMode;

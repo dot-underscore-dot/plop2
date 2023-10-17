@@ -1,9 +1,3 @@
-import { elements } from "../glue/elements.js";
-
-const getShaderHead = () => `#version 300 es
-${Array.from(elements).map(([type, data]) => `#define ${data.name.toUpperCase()} (${type}u)`).join('\n')}
-`
-
 export async function instantiateWebGl(canvas: HTMLCanvasElement, exports: PlopExports) {
     const gl = canvas.getContext('webgl2') as WebGL2RenderingContext;
 
@@ -13,7 +7,6 @@ export async function instantiateWebGl(canvas: HTMLCanvasElement, exports: PlopE
     ].map(name => fetch(`./shaders/${name}.glsl`).then(res => res.text()))))
     .map((source, i) => {
         const isVertexShader = i == 0;
-        if(!isVertexShader) source = getShaderHead() + source;
         const shader = gl.createShader(isVertexShader ? gl.VERTEX_SHADER : gl.FRAGMENT_SHADER) as WebGLShader;
         gl.shaderSource(shader, source);
         gl.compileShader(shader);

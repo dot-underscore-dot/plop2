@@ -2,6 +2,11 @@
 #include "../random/random.h"
 #include "world.h"
 
+INLINE f32 fabs32(f32 f) {
+    u32 i = ((*(u32*)&f) & 0x7fffffff);
+    return (*(f32*)&i);
+}
+
 void updateChunkTemperature(Chunk *chunk) {
     u32 totalSignificantTransfers = 0;
 

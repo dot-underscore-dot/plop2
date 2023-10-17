@@ -35,10 +35,10 @@
 #endif
 #define ASSERT_EQ(a,b) WALLOC_ASSERT((a) == (b))
 
-static inline size_t max(size_t a, size_t b) {
+static INLINE size_t max(size_t a, size_t b) {
   return a < b ? b : a;
 }
-static inline uintptr_t align(uintptr_t val, uintptr_t alignment) {
+static INLINE uintptr_t align(uintptr_t val, uintptr_t alignment) {
   return (val + alignment - 1) & ~(alignment - 1);
 }
 #define ASSERT_ALIGNED(x, y) WALLOC_ASSERT((x) == align((x), y))
@@ -138,10 +138,10 @@ struct large_object {
 
 #define LARGE_OBJECT_HEADER_SIZE (sizeof (struct large_object))
 
-static inline void* get_large_object_payload(struct large_object *obj) {
+static INLINE void* get_large_object_payload(struct large_object *obj) {
   return ((char*) obj) + LARGE_OBJECT_HEADER_SIZE;
 }
-static inline struct large_object* get_large_object(void *ptr) {
+static INLINE struct large_object* get_large_object(void *ptr) {
   return (struct large_object*) (((char*) ptr) - LARGE_OBJECT_HEADER_SIZE);
 }
 
@@ -401,7 +401,7 @@ obtain_small_objects(enum chunk_kind kind) {
   return next;
 }
 
-static inline size_t size_to_granules(size_t size) {
+static INLINE size_t size_to_granules(size_t size) {
   return (size + GRANULE_SIZE - 1) >> GRANULE_SIZE_LOG_2;
 }
 static struct freelist** get_small_object_freelist(enum chunk_kind kind) {

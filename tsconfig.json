@@ -15,6 +15,9 @@
 
         "skipLibCheck": true,
         
-        "sourceMap": true
+        "sourceMap": true,
+        
+        "incremental": true,
+        "tsBuildInfoFile": "./build/.tsbuildinfo"
     }
 }

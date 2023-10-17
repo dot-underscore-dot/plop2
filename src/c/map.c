@@ -130,7 +130,7 @@ static void hashmap_resize(hashmap* m)
 #define HASHMAP_HASH_INIT 2166136261u
 
 // FNV-1a hash function
-static inline uint32_t hash_data(const unsigned char* data, size_t size)
+static INLINE uint32_t hash_data(const unsigned char* data, size_t size)
 {
 	size_t nblocks = size / 8;
 	uint64_t hash = HASHMAP_HASH_INIT;

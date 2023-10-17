@@ -2,6 +2,14 @@
   "name": "plop2",
   "version": "1.0.0",
   "dependencies": {
+    "live-server": "^1.2.2"
+  },
+  "scripts": {
+    "start": "node live-server.mjs",
+    "build":"node --no-warnings=ExperimentalWarning build.mjs",
+    "clean-build":"node --no-warnings=ExperimentalWarning build.mjs --clean"
+  },
+  "devDependencies": {
     "join-images": "^1.1.5",
     "typescript": "^5.1.6"
   }
